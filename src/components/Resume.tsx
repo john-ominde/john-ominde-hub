@@ -13,9 +13,9 @@ export const Resume = () => {
       description: "Your resume download will start shortly.",
     });
     
-    // Simulate PDF download
+    // Download the actual PDF resume
     const link = document.createElement('a');
-    link.href = '#'; // In production: link to actual PDF file
+    link.href = '/John-Ominde-Resume.pdf';
     link.download = 'John-Ominde-Resume.pdf';
     document.body.appendChild(link);
     link.click();

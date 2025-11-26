@@ -116,7 +116,7 @@ export const Contact = () => {
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">LinkedIn</h3>
                   <a 
-                    href="#"
+                    href="https://www.linkedin.com/in/john-ominde"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary transition-smooth"
