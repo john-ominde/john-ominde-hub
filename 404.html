@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      // Redirect to the main page with hash routing
+      const path = window.location.pathname;
+      const hash = window.location.hash;
+      const search = window.location.search;
+      window.location.replace(
+        window.location.origin + 
+        window.location.pathname.split('/').slice(0, -1).join('/') + 
+        '/#/' + 
+        path.split('/').pop() + 
+        search + 
+        hash
+      );
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
