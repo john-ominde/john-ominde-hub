@@ -17,6 +17,17 @@ export const Contact = () => {
     message: "",
   });
 
+  const getServiceLabel = (value: string) => {
+    const services: Record<string, string> = {
+      admin: "Administrative Support",
+      customer: "Customer Service",
+      social: "Social Media Assistance",
+      project: "Project Coordination",
+      other: "Other",
+    };
+    return services[value] || value;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -30,10 +41,22 @@ export const Contact = () => {
       return;
     }
 
-    // In production, this would submit to a backend
+    // Build email body
+    const subject = encodeURIComponent(`Contact from ${formData.name} - Portfolio Inquiry`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phone || "Not provided"}\n` +
+      `Service Interested In: ${formData.service ? getServiceLabel(formData.service) : "Not specified"}\n\n` +
+      `Message:\n${formData.message}`
+    );
+
+    // Open mailto link
+    window.location.href = `mailto:jonzj.ominde@gmail.com?subject=${subject}&body=${body}`;
+
     toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
+      title: "Opening Email Client",
+      description: "Your default email app will open with the message pre-filled.",
     });
 
     // Reset form
