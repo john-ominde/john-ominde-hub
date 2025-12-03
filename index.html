@@ -47,6 +47,127 @@
     <!-- Theme Color -->
     <meta name="theme-color" content="#0b3d91" />
     <meta name="msapplication-TileColor" content="#0b3d91" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://jonzjohn.com/#website",
+          "url": "https://jonzjohn.com/",
+          "name": "John Ominde — Virtual Assistant",
+          "description": "Professional Virtual Assistant providing administrative support, customer service, social media management, and project coordination.",
+          "publisher": {
+            "@id": "https://jonzjohn.com/#person"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://jonzjohn.com/#person",
+          "name": "John Ominde",
+          "givenName": "John",
+          "familyName": "Ominde",
+          "url": "https://jonzjohn.com/",
+          "image": "https://jonzjohn.com/john-ominde-logo.svg",
+          "jobTitle": "Virtual Assistant",
+          "description": "Detail-oriented Virtual Assistant with experience supporting U.S.-based businesses through administrative operations, email management, scheduling, customer support, and content coordination.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Nairobi",
+            "addressCountry": "Kenya"
+          },
+          "email": "ominde.john.tech@gmail.com",
+          "telephone": "+254111276271",
+          "sameAs": [
+            "https://www.linkedin.com/in/john-ominde"
+          ],
+          "knowsAbout": [
+            "Virtual Administrative Support",
+            "Customer Service",
+            "Social Media Management",
+            "Project Coordination",
+            "Email Management",
+            "Calendar Management",
+            "CRM Management",
+            "Google Workspace",
+            "Microsoft Office",
+            "Trello",
+            "Asana",
+            "ClickUp",
+            "Slack",
+            "Zoom",
+            "Canva",
+            "HubSpot",
+            "Salesforce"
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://jonzjohn.com/#services",
+          "provider": {
+            "@id": "https://jonzjohn.com/#person"
+          },
+          "serviceType": "Virtual Assistant Services",
+          "areaServed": {
+            "@type": "Country",
+            "name": "United States"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Virtual Assistant Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Virtual Administrative Support",
+                  "description": "Email and inbox management, calendar scheduling, document preparation, and data organization"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Customer Service & Client Support",
+                  "description": "Customer inquiries, CRM updates, follow-ups, and resolution management"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Social Media Assistance",
+                  "description": "Content scheduling, creation, engagement, and social media calendars"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Project & Task Coordination",
+                  "description": "Task tracking, meeting preparation, research, and workflow optimization"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://jonzjohn.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://jonzjohn.com/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
 
   <body>
