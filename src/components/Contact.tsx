@@ -5,10 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Linkedin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Send, Loader2 } from "lucide-react";
 
 export const Contact = () => {
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,7 +29,7 @@ export const Contact = () => {
     return services[value] || value;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -41,32 +42,52 @@ export const Contact = () => {
       return;
     }
 
-    // Build email body
-    const subject = encodeURIComponent(`Contact from ${formData.name} - Portfolio Inquiry`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Phone: ${formData.phone || "Not provided"}\n` +
-      `Service Interested In: ${formData.service ? getServiceLabel(formData.service) : "Not specified"}\n\n` +
-      `Message:\n${formData.message}`
-    );
+    setIsLoading(true);
 
-    // Open mailto link
-    window.location.href = `mailto:jonzj.ominde@gmail.com?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Replace with your key from web3forms.com
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || "Not provided",
+          service: formData.service ? getServiceLabel(formData.service) : "Not specified",
+          message: formData.message,
+          subject: `New Contact from ${formData.name} - Portfolio`,
+        }),
+      });
 
-    toast({
-      title: "Opening Email Client",
-      description: "Your default email app will open with the message pre-filled.",
-    });
+      const result = await response.json();
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    });
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
+      } else {
+        throw new Error(result.message || "Failed to send message");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or email directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -233,10 +254,20 @@ export const Contact = () => {
               <Button
                 type="submit"
                 size="lg"
+                disabled={isLoading}
                 className="w-full gradient-primary text-primary-foreground shadow-elegant"
               >
-                <Send className="mr-2 h-5 w-5" />
-                Send Message
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-5 w-5" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </Card>
