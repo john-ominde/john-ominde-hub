@@ -53,7 +53,7 @@ export const Resume = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
               <span>📍 Nairobi, Kenya</span>
-              <span>📧 ominde.john.tech@gmail.com</span>
+              <span>📧 ominde@jonzjohn.com</span>
               <span>📱 +254111276271</span>
             </div>
           </Card>

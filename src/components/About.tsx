@@ -49,7 +49,7 @@ export const About = () => {
                   </h3>
                   <div className="space-y-2 text-foreground/80">
                     <p><strong>Location:</strong> Nairobi, Kenya</p>
-                    <p><strong>Email:</strong> ominde.john.tech@gmail.com</p>
+                    <p><strong>Email:</strong> ominde@jonzjohn.com</p>
                     <p><strong>Phone:</strong> +254111276271</p>
                     <p><strong>Languages:</strong> English (Fluent), Swahili (Native)</p>
                   </div>
