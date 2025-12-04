@@ -63,7 +63,7 @@ export const Hero = () => {
             {/* Quick Contact Info */}
             <div className="pt-8 space-y-2 text-sm text-muted-foreground">
               <p>📍 Nairobi, Kenya</p>
-              <p>📧 ominde.john.tech@gmail.com</p>
+              <p>📧 ominde@jonzjohn.com</p>
               <p>📱 +254111276271</p>
             </div>
           </div>
